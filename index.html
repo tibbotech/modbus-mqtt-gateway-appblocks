@@ -206,6 +206,39 @@
   .browser-body .table[hidden]{display:none}
   .shot-caption{margin:16px 2px 0;color:var(--muted);font-size:.95rem;max-width:76ch}
   .shot-caption b{color:#fff;font-weight:600}
+
+  /* Animated scenario diagram */
+  .scn-frame{position:relative;margin-top:30px;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    background:radial-gradient(760px 320px at 50% -10%,rgba(59,130,246,.14),transparent 65%),var(--card);
+    padding:16px 16px 8px}
+  .scn{display:block;width:100%;height:auto;min-width:0}
+  .scn text{font-family:inherit;fill:var(--ink)}
+  .scn .t-node{font-size:13px;font-weight:600}
+  .scn .t-sub{font-size:10px;fill:var(--muted)}
+  .scn .t-icon{font-size:15px}
+  .scn .t-flow{font-size:10px;font-weight:700;letter-spacing:.14em;fill:var(--brand-2)}
+  .scn .t-title{font-size:15px;font-weight:800;letter-spacing:-.01em;fill:#fff}
+  .scn .t-pill{font-size:9.5px;font-weight:600;fill:var(--muted)}
+  .scn .t-read{font-size:11px;fill:var(--brand-2);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .scn rect.node{fill:#16223c;stroke:#2a3a5c;stroke-width:1.2}
+  .scn rect.pill{fill:#0e1729;stroke:#2a3a5c;stroke-width:1}
+  .scn .link{fill:none;stroke:#2c3f66;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .scn .cloudpart{fill:url(#scnCloud);stroke:#2f5f8f;stroke-width:1.2}
+  .scn .halo{fill:none;stroke:var(--brand);stroke-width:1.6;opacity:0}
+  .scn-note{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:8px 4px 6px}
+  .scn-note span{font-size:.78rem;color:var(--muted);background:var(--bg);border:1px solid var(--line);
+    border-radius:999px;padding:5px 12px}
+  .scn-note b{color:var(--ink);font-weight:600}
+  .scn-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .scn-hint{display:none;text-align:center;font-size:.76rem;color:var(--muted);padding:2px 0 6px}
+  /* Below ~900px the diagram would shrink past legibility, so it pans instead. */
+  @media(max-width:900px){
+    .scn{min-width:860px}
+    .scn-hint{display:block}
+    .scn-frame{padding:12px 0 6px}
+    .scn-note{padding:8px 12px 6px}
+    .scn-note span{font-size:.72rem;padding:4px 10px}
+  }
 </style>
 </head>
 <body>
@@ -294,6 +327,148 @@
       <span class="chip">Per-tag <b>scale multiplier</b></span>
       <span class="chip"><b>SNTP</b> time sync with time zone</span>
       <span class="chip"><b>Password</b>-protected web console</span>
+    </div>
+  </div>
+</section>
+
+<!-- Animated end-to-end scenario -->
+<section id="scenario" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="eyebrow">Connect any industrial device</div>
+    <h2>From an RS-485 register to your dashboard.</h2>
+    <p class="muted" style="max-width:64ch;margin-top:-6px">The gateway sits between the field bus and the broker: it polls each tag you listed, scales and timestamps the reading, then publishes it on your topic tree. Everything downstream is just an MQTT subscriber.</p>
+
+    <div class="scn-frame">
+      <div class="scn-scroll">
+      <svg class="scn" id="scnSvg" viewBox="0 0 1120 470" role="img"
+           aria-label="Data flow: Modbus RTU field devices on RS-485 are polled by the Modbus MQTT Gateway, which publishes over Ethernet or Wi-Fi to an MQTT broker, where dashboards, mobile apps, SCADA and cloud applications subscribe.">
+        <defs>
+          <linearGradient id="scnGw" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1d3b6b"/><stop offset="1" stop-color="#16223c"/>
+          </linearGradient>
+          <linearGradient id="scnCloud" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1b3358"/><stop offset="1" stop-color="#152742"/>
+          </linearGradient>
+          <filter id="scnGlow" x="-120%" y="-120%" width="340%" height="340%">
+            <feGaussianBlur stdDeviation="3.2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- links: field bus -->
+        <g id="scnLinks">
+          <path class="link" id="p-dev-0" d="M205,100 C232,100 236,240 250,240 H350"/>
+          <path class="link" id="p-dev-1" d="M205,156 C232,156 236,240 250,240 H350"/>
+          <path class="link" id="p-dev-2" d="M205,212 C232,212 240,240 250,240 H350"/>
+          <path class="link" id="p-dev-3" d="M205,268 C232,268 240,240 250,240 H350"/>
+          <path class="link" id="p-dev-4" d="M205,324 C232,324 236,240 250,240 H350"/>
+          <path class="link" id="p-dev-5" d="M205,380 C232,380 236,240 250,240 H350"/>
+          <!-- links: gateway → transport → broker (split at the chip, so packets are
+               consumed and re-emitted rather than sliding across the label) -->
+          <path class="link" id="p-tx-0a" d="M565,240 C585,240 585,175 605,175"/>
+          <path class="link" id="p-tx-0b" d="M735,175 C772,175 786,190 848,196"/>
+          <path class="link" id="p-tx-1a" d="M565,240 C585,240 585,265 605,265"/>
+          <path class="link" id="p-tx-1b" d="M735,265 C772,265 786,232 848,208"/>
+          <!-- links: broker → subscribers -->
+          <path class="link" id="p-out-0" d="M915,232 V340 H675 V391"/>
+          <path class="link" id="p-out-1" d="M915,232 V340 H795 V391"/>
+          <path class="link" id="p-out-2" d="M915,232 V391"/>
+          <path class="link" id="p-out-3" d="M915,232 V340 H1035 V391"/>
+        </g>
+
+        <!-- column headers -->
+        <g class="gnode">
+          <text class="t-flow" x="115" y="44" text-anchor="middle">RS-485 · MODBUS RTU</text>
+          <text class="t-sub"  x="115" y="62" text-anchor="middle">FC 1 · 2 · 3 · 4 · slave IDs 1–255</text>
+        </g>
+        <g class="gnode">
+          <text class="t-flow" x="670" y="44" text-anchor="middle">NETWORK</text>
+          <text class="t-sub"  x="670" y="62" text-anchor="middle">DHCP or static IP</text>
+        </g>
+        <g class="gnode">
+          <text class="t-flow" x="912" y="44" text-anchor="middle">MQTT</text>
+          <text class="t-sub"  x="912" y="62" text-anchor="middle">publish ≥ 5 s</text>
+        </g>
+
+        <!-- field devices -->
+        <g class="gnode" data-dev="0"><rect class="node" x="25" y="78" width="180" height="44" rx="11"/>
+          <text class="t-icon" x="46" y="106">⚙️</text><text class="t-node" x="70" y="105">PLC / controller</text></g>
+        <g class="gnode" data-dev="1"><rect class="node" x="25" y="134" width="180" height="44" rx="11"/>
+          <text class="t-icon" x="46" y="162">⚡</text><text class="t-node" x="70" y="161">Energy meter</text></g>
+        <g class="gnode" data-dev="2"><rect class="node" x="25" y="190" width="180" height="44" rx="11"/>
+          <text class="t-icon" x="46" y="218">🌀</text><text class="t-node" x="70" y="217">VFD / drive</text></g>
+        <g class="gnode" data-dev="3"><rect class="node" x="25" y="246" width="180" height="44" rx="11"/>
+          <text class="t-icon" x="46" y="274">🌡️</text><text class="t-node" x="70" y="273">Temperature sensor</text></g>
+        <g class="gnode" data-dev="4"><rect class="node" x="25" y="302" width="180" height="44" rx="11"/>
+          <text class="t-icon" x="46" y="330">💧</text><text class="t-node" x="70" y="329">Flow meter</text></g>
+        <g class="gnode" data-dev="5"><rect class="node" x="25" y="358" width="180" height="44" rx="11"/>
+          <text class="t-icon" x="46" y="386">📟</text><text class="t-node" x="70" y="385">RTU / I-O module</text></g>
+
+        <text class="t-flow" x="300" y="230" text-anchor="middle">POLL</text>
+        <text class="t-sub"  x="300" y="258" text-anchor="middle">every 0–600 s</text>
+
+        <!-- gateway -->
+        <g class="gnode" id="scnGwNode">
+          <rect id="scnGwHalo" class="halo" x="350" y="178" width="215" height="124" rx="16"/>
+          <rect x="350" y="178" width="215" height="124" rx="15" fill="url(#scnGw)" stroke="#3b82f6" stroke-width="1.4"/>
+          <text class="t-flow" x="457" y="200" text-anchor="middle">TPP2W(G2)</text>
+          <text class="t-title" x="457" y="222" text-anchor="middle">Modbus MQTT Gateway</text>
+          <text class="t-sub" x="457" y="240" text-anchor="middle">poll · scale · timestamp · publish</text>
+          <rect class="pill" x="366" y="252" width="58" height="20" rx="10"/>
+          <text class="t-pill" x="395" y="266" text-anchor="middle">30 tags</text>
+          <rect class="pill" x="430" y="252" width="56" height="20" rx="10"/>
+          <text class="t-pill" x="458" y="266" text-anchor="middle">10k log</text>
+          <rect class="pill" x="492" y="252" width="58" height="20" rx="10"/>
+          <text class="t-pill" x="521" y="266" text-anchor="middle">web UI</text>
+        </g>
+        <text class="t-read" id="scnRead" x="457" y="330" text-anchor="middle" opacity="0">plant1/line2/boiler_temp → 72.4</text>
+
+        <!-- transports -->
+        <g class="gnode" data-tx="0"><rect class="node" x="605" y="153" width="130" height="44" rx="11"/>
+          <text class="t-icon" x="624" y="181">🔗</text><text class="t-node" x="648" y="180">Ethernet</text></g>
+        <g class="gnode" data-tx="1"><rect class="node" x="605" y="243" width="130" height="44" rx="11"/>
+          <text class="t-icon" x="624" y="271">📶</text><text class="t-node" x="648" y="270">Wi-Fi</text></g>
+        <text class="t-flow" x="770" y="146" text-anchor="middle">PUBLISH · QoS 0</text>
+
+        <!-- broker -->
+        <g class="gnode" id="scnCloudNode">
+          <g id="scnCloudBody">
+            <path class="cloudpart" d="M865,232 C838,232 828,206 845,190 C836,166 862,142 886,152
+                                       C896,126 936,122 950,146 C980,142 998,172 980,192
+                                       C996,208 984,232 962,232 Z"/>
+          </g>
+          <text class="t-title" x="915" y="180" text-anchor="middle">MQTT broker</text>
+          <text class="t-sub" x="915" y="199" text-anchor="middle">any broker · TLS optional</text>
+        </g>
+        <text class="t-flow" x="665" y="336" text-anchor="end">SUBSCRIBERS</text>
+
+        <!-- subscribers -->
+        <g class="gnode" data-out="0"><rect class="node" x="620" y="391" width="110" height="54" rx="12"/>
+          <text class="t-icon" x="675" y="415" text-anchor="middle">📊</text>
+          <text class="t-sub" x="675" y="433" text-anchor="middle" style="font-size:11px;fill:var(--ink)">Dashboards</text></g>
+        <g class="gnode" data-out="1"><rect class="node" x="740" y="391" width="110" height="54" rx="12"/>
+          <text class="t-icon" x="795" y="415" text-anchor="middle">📱</text>
+          <text class="t-sub" x="795" y="433" text-anchor="middle" style="font-size:11px;fill:var(--ink)">Mobile app</text></g>
+        <g class="gnode" data-out="2"><rect class="node" x="860" y="391" width="110" height="54" rx="12"/>
+          <text class="t-icon" x="915" y="415" text-anchor="middle">🖥️</text>
+          <text class="t-sub" x="915" y="433" text-anchor="middle" style="font-size:11px;fill:var(--ink)">SCADA / HMI</text></g>
+        <g class="gnode" data-out="3"><rect class="node" x="980" y="391" width="110" height="54" rx="12"/>
+          <text class="t-icon" x="1035" y="415" text-anchor="middle">☁️</text>
+          <text class="t-sub" x="1035" y="433" text-anchor="middle" style="font-size:11px;fill:var(--ink)">Cloud apps</text></g>
+
+        <g id="scnPkts" filter="url(#scnGlow)"></g>
+      </svg>
+      </div>
+      <p class="scn-hint">← swipe the diagram to follow the data →</p>
+
+      <div class="scn-note">
+        <span><b>30</b> register tags</span>
+        <span>Slave IDs <b>1–255</b></span>
+        <span>Poll <b>0–600 s</b></span>
+        <span>Publish <b>≥ 5 s</b></span>
+        <span>Topic <b>prefix/tag_name</b></span>
+        <span><b>TLS</b> with certificate</span>
+      </div>
     </div>
   </div>
 </section>
@@ -652,6 +827,123 @@
     }
     return true; // real endpoint configured → let it submit
   }
+</script>
+
+<!-- GSAP: drives the scenario diagram. The diagram is fully readable without it —
+     if these fail to load, or the visitor prefers reduced motion, it just sits still. -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+  var svg = document.getElementById('scnSvg');
+  if(!svg || !window.gsap || !window.MotionPathPlugin) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  gsap.registerPlugin(MotionPathPlugin);
+
+  var NS   = 'http://www.w3.org/2000/svg';
+  var pkts = document.getElementById('scnPkts');
+  var read = document.getElementById('scnRead');
+  var halo = document.getElementById('scnGwHalo');
+  var devs = svg.querySelectorAll('[data-dev]');
+  var txs  = svg.querySelectorAll('[data-tx]');
+  var outs = svg.querySelectorAll('[data-out]');
+  var links = svg.querySelectorAll('.link');
+
+  // A packet is a small dot that rides one of the link paths.
+  function packet(color, r){
+    var c = document.createElementNS(NS,'circle');
+    c.setAttribute('r', r); c.setAttribute('fill', color); c.setAttribute('opacity','0');
+    pkts.appendChild(c);
+    return c;
+  }
+
+  var master = gsap.timeline({paused:true, repeat:-1, repeatDelay:.45, defaults:{ease:'none'}});
+
+  // Ride `path` from start to end, fading in on departure and out on arrival.
+  function ride(path, at, dur, color, r){
+    var el = packet(color, r);
+    var t = gsap.timeline();
+    t.set(el, {opacity:0}, 0)
+     .to(el, {motionPath:{path:path, align:path, alignOrigin:[.5,.5]}, duration:dur}, 0)
+     .to(el, {opacity:1, duration:.16}, 0)
+     .to(el, {opacity:0, duration:.2}, dur-.2);
+    master.add(t, at);
+  }
+
+  // Flash a node's border as data passes through it.
+  function flash(node, at, tint){
+    var box = node.querySelector('rect');
+    master.to(box, {stroke:tint||'#22d3ee', duration:.22, yoyo:true, repeat:1, ease:'power2.out'}, at);
+  }
+
+  var CYAN = '#22d3ee', BLUE = '#60a5fa', GREEN = '#34d399';
+
+  // 1 — poll: every field device answers, staggered down the bus
+  for(var i=0;i<6;i++){
+    var at = .12*i;
+    flash(devs[i], at);
+    ride('#p-dev-'+i, at,      1.45, CYAN, 4.2);
+    ride('#p-dev-'+i, at+.62,  1.45, CYAN, 3.2);
+  }
+
+  // 2 — gateway scales, timestamps and logs the batch
+  master.fromTo(halo, {opacity:.9, scale:1, svgOrigin:'457 240'},
+                      {opacity:0, scale:1.14, duration:.9, ease:'power2.out'}, 1.55);
+  master.fromTo(read, {opacity:0, y:6}, {opacity:1, y:0, duration:.3}, 1.7)
+        .to(read, {opacity:0, duration:.3}, 4.0);
+
+  // 3 — publish: out over Ethernet / Wi-Fi to the broker
+  for(var t=0;t<2;t++){
+    var t0 = 1.95 + .12*t;
+    ride('#p-tx-'+t+'a', t0,     .75, BLUE, 4.2);
+    ride('#p-tx-'+t+'a', t0+.45, .75, BLUE, 3.2);
+    flash(txs[t], t0+.72, BLUE);
+    ride('#p-tx-'+t+'b', t0+.85, .8, BLUE, 4.2);
+    ride('#p-tx-'+t+'b', t0+1.3, .8, BLUE, 3.2);
+  }
+
+  // 4 — broker fans the topic out to whoever subscribed
+  master.fromTo('#scnCloudBody', {scale:1, svgOrigin:'912 185'},
+                                 {scale:1.045, duration:.4, yoyo:true, repeat:1, ease:'power2.inOut'}, 4.0);
+  for(var o=0;o<4;o++){
+    ride('#p-out-'+o, 4.2+.07*o, 1.25, GREEN, 4);
+    flash(outs[o], 5.3+.07*o, GREEN);
+  }
+
+  // Rotate the readout so each cycle shows a different tag.
+  var SAMPLES = [
+    'plant1/line2/boiler_temp → 72.4',
+    'plant1/line2/flow_rate → 18',
+    'plant1/line2/kwh_total → 10432.75',
+    'plant1/line2/pump_run → 1'
+  ];
+  var s = 0;
+  master.eventCallback('onRepeat', function(){
+    s = (s+1) % SAMPLES.length;
+    read.textContent = SAMPLES[s];
+  });
+
+  // Intro: draw the links in, then hand over to the loop.
+  var intro = gsap.timeline({paused:true, onComplete:function(){ master.play(0); }});
+  intro.from(svg.querySelectorAll('.gnode'), {opacity:0, y:10, duration:.5, stagger:.045, ease:'power2.out'}, 0);
+  links.forEach(function(p){
+    var len = p.getTotalLength();
+    intro.fromTo(p, {strokeDasharray:len, strokeDashoffset:len}, {strokeDashoffset:0, duration:.7, ease:'power1.inOut'}, .25);
+  });
+
+  // Only run while the diagram is actually on screen.
+  var started = false;
+  if(!('IntersectionObserver' in window)){ intro.play(); return; }
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        if(!started){ started = true; intro.play(); }
+        else if(intro.progress() === 1){ master.play(); }
+      } else if(started){ master.pause(); }
+    });
+  }, {threshold:.25}).observe(svg);
+})();
 </script>
 </body>
 </html>
