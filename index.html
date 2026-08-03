@@ -363,12 +363,8 @@
           <path class="link" id="p-dev-3" d="M205,268 C232,268 240,240 250,240 H350"/>
           <path class="link" id="p-dev-4" d="M205,324 C232,324 236,240 250,240 H350"/>
           <path class="link" id="p-dev-5" d="M205,380 C232,380 236,240 250,240 H350"/>
-          <!-- links: gateway → transport → broker (split at the chip, so packets are
-               consumed and re-emitted rather than sliding across the label) -->
-          <path class="link" id="p-tx-0a" d="M565,240 C585,240 585,175 605,175"/>
-          <path class="link" id="p-tx-0b" d="M735,175 C772,175 786,190 848,196"/>
-          <path class="link" id="p-tx-1a" d="M565,240 C585,240 585,265 605,265"/>
-          <path class="link" id="p-tx-1b" d="M735,265 C772,265 786,232 848,208"/>
+          <!-- link: gateway → broker -->
+          <path class="link" id="p-tx-0" d="M565,240 C640,240 700,220 848,203"/>
           <!-- links: broker → subscribers -->
           <path class="link" id="p-out-0" d="M915,232 V340 H675 V391"/>
           <path class="link" id="p-out-1" d="M915,232 V340 H795 V391"/>
@@ -382,8 +378,8 @@
           <text class="t-sub"  x="115" y="62" text-anchor="middle">FC 1 · 2 · 3 · 4 · slave IDs 1–255</text>
         </g>
         <g class="gnode">
-          <text class="t-flow" x="670" y="44" text-anchor="middle">NETWORK</text>
-          <text class="t-sub"  x="670" y="62" text-anchor="middle">DHCP or static IP</text>
+          <text class="t-flow" x="457" y="44" text-anchor="middle">GATEWAY</text>
+          <text class="t-sub"  x="457" y="62" text-anchor="middle">Ethernet · DHCP or static IP</text>
         </g>
         <g class="gnode">
           <text class="t-flow" x="912" y="44" text-anchor="middle">MQTT</text>
@@ -423,12 +419,8 @@
         </g>
         <text class="t-read" id="scnRead" x="457" y="330" text-anchor="middle" opacity="0">plant1/line2/boiler_temp → 72.4</text>
 
-        <!-- transports -->
-        <g class="gnode" data-tx="0"><rect class="node" x="605" y="153" width="130" height="44" rx="11"/>
-          <text class="t-icon" x="624" y="181">🔗</text><text class="t-node" x="648" y="180">Ethernet</text></g>
-        <g class="gnode" data-tx="1"><rect class="node" x="605" y="243" width="130" height="44" rx="11"/>
-          <text class="t-icon" x="624" y="271">📶</text><text class="t-node" x="648" y="270">Wi-Fi</text></g>
-        <text class="t-flow" x="770" y="146" text-anchor="middle">PUBLISH · QoS 0</text>
+        <!-- the publish leg -->
+        <text class="t-flow" x="700" y="206" text-anchor="middle">PUBLISH</text>
 
         <!-- broker -->
         <g class="gnode" id="scnCloudNode">
