@@ -838,7 +838,6 @@
   var read = document.getElementById('scnRead');
   var halo = document.getElementById('scnGwHalo');
   var devs = svg.querySelectorAll('[data-dev]');
-  var txs  = svg.querySelectorAll('[data-tx]');
   var outs = svg.querySelectorAll('[data-out]');
   var links = svg.querySelectorAll('.link');
 
@@ -883,7 +882,7 @@
   master.fromTo(halo, {opacity:.9, scale:1, svgOrigin:'457 240'},
                       {opacity:0, scale:1.14, duration:.9, ease:'power2.out'}, 1.55);
   master.fromTo(read, {opacity:0, y:6}, {opacity:1, y:0, duration:.3}, 1.7)
-        .to(read, {opacity:0, duration:.3}, 4.0);
+        .to(read, {opacity:0, duration:.3}, 3.5);
 
   // 3 — publish: straight from the gateway to the broker
   ride('#p-tx-0', 1.95, 1.35, BLUE, 4.2);
@@ -892,10 +891,10 @@
 
   // 4 — broker fans the topic out to whoever subscribed
   master.fromTo('#scnCloudBody', {scale:1, svgOrigin:'912 185'},
-                                 {scale:1.045, duration:.4, yoyo:true, repeat:1, ease:'power2.inOut'}, 4.0);
+                                 {scale:1.045, duration:.4, yoyo:true, repeat:1, ease:'power2.inOut'}, 3.4);
   for(var o=0;o<4;o++){
-    ride('#p-out-'+o, 4.2+.07*o, 1.25, GREEN, 4);
-    flash(outs[o], 5.3+.07*o, GREEN);
+    ride('#p-out-'+o, 3.7+.07*o, 1.25, GREEN, 4);
+    flash(outs[o], 4.8+.07*o, GREEN);
   }
 
   // Rotate the readout so each cycle shows a different tag.
