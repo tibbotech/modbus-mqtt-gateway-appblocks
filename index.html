@@ -885,15 +885,10 @@
   master.fromTo(read, {opacity:0, y:6}, {opacity:1, y:0, duration:.3}, 1.7)
         .to(read, {opacity:0, duration:.3}, 4.0);
 
-  // 3 — publish: out over Ethernet / Wi-Fi to the broker
-  for(var t=0;t<2;t++){
-    var t0 = 1.95 + .12*t;
-    ride('#p-tx-'+t+'a', t0,     .75, BLUE, 4.2);
-    ride('#p-tx-'+t+'a', t0+.45, .75, BLUE, 3.2);
-    flash(txs[t], t0+.72, BLUE);
-    ride('#p-tx-'+t+'b', t0+.85, .8, BLUE, 4.2);
-    ride('#p-tx-'+t+'b', t0+1.3, .8, BLUE, 3.2);
-  }
+  // 3 — publish: straight from the gateway to the broker
+  ride('#p-tx-0', 1.95, 1.35, BLUE, 4.2);
+  ride('#p-tx-0', 2.35, 1.35, BLUE, 3.4);
+  ride('#p-tx-0', 2.75, 1.35, BLUE, 4.2);
 
   // 4 — broker fans the topic out to whoever subscribed
   master.fromTo('#scnCloudBody', {scale:1, svgOrigin:'912 185'},
