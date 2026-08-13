@@ -119,11 +119,17 @@
   .app .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:1.2rem;
     background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.3);margin-bottom:14px}
   .app h3{font-size:1.06rem;margin-bottom:.4em}
-  .app p{color:var(--muted);font-size:.93rem;margin:0 0 16px}
+  .app p{color:var(--muted);font-size:.93rem;margin:0 0 15px}
+  /* Miniature of the register-map → topic idiom used in the "How it works" codeboxes. */
+  .app .mini{background:#0a0f1c;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:15px}
+  .app .mini .mh{padding:7px 12px;background:var(--bg-soft);border-bottom:1px solid var(--line);
+    font-size:.66rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700}
+  .app .mini pre{margin:0;padding:11px 12px;overflow-x:auto;font-size:.75rem;line-height:1.9;color:#8fa3c4}
+  .app .mini .t{color:var(--brand-2)}
+  .app .mini .n{color:var(--ok)}
   .app .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
   .app .tags span{font-size:.72rem;color:var(--muted);background:var(--bg);border:1px solid var(--line);
     border-radius:999px;padding:3px 9px}
-  .app .tags b{color:var(--brand-2);font-weight:600}
   .apps-more{margin-top:26px;background:linear-gradient(180deg,var(--bg-soft),transparent);
     border:1px solid var(--line);border-radius:14px;padding:22px}
   .apps-more h3{font-size:1rem;margin-bottom:.5em}
@@ -508,15 +514,21 @@
   <div class="wrap">
     <div class="eyebrow">Where it is used</div>
     <h2>If it has Modbus registers, it has a place on your dashboard.</h2>
-    <p class="muted" style="max-width:66ch;margin-top:-6px">The gateway doesn't care what the equipment is — a slave ID, a register address, and a function code are enough. These are the applications engineers bring to us most often.</p>
+    <p class="muted" style="max-width:66ch;margin-top:-6px">The gateway doesn't care what the equipment is — a slave ID, a register address, and a function code are enough. These are the applications engineers bring to us most often; each one shows a slice of the register map you would type into the console, and the values that land on your broker.</p>
 
     <div class="apps">
       <div class="app">
         <div class="ic">🏢</div>
         <h3>Building management &amp; HVAC</h3>
         <p>Chillers, air handlers, VRF controllers, and floor-level meters already speak Modbus RTU. Publish their temperatures, setpoints, and run states to a BMS dashboard or analytics platform without paying per point.</p>
+        <div class="mini">
+          <div class="mh">Devices table → broker</div>
+<pre>FC3 40001 ×0.1 → <span class="t">supply_temp</span>  <span class="n">18.4</span>
+FC3 40105 ×1   → <span class="t">setpoint</span>     <span class="n">21</span>
+FC1 00034      → <span class="t">fan_run</span>      <span class="n">1</span></pre>
+        </div>
         <div class="tags">
-          <span><b>FC3</b> supply / return temp</span><span>setpoint</span><span>fan &amp; valve status</span><span>floor kWh</span>
+          <span>return temp</span><span>valve position</span><span>chiller kW</span><span>floor kWh</span>
         </div>
       </div>
 
@@ -524,8 +536,14 @@
         <div class="ic">🏭</div>
         <h3>Manufacturing &amp; machine monitoring</h3>
         <p>Read cycle counters, machine states, drive speed, and load from the PLCs and VFDs already on the line. Poll fast for a responsive process and still publish a tidy update every 30&nbsp;s to your OEE or downtime dashboard.</p>
+        <div class="mini">
+          <div class="mh">Devices table → broker</div>
+<pre>FC3 40020 ×1   → <span class="t">cycle_count</span>  <span class="n">84213</span>
+FC3 40044 ×0.1 → <span class="t">vfd_hz</span>       <span class="n">47.5</span>
+FC1 00009      → <span class="t">fault</span>        <span class="n">0</span></pre>
+        </div>
         <div class="tags">
-          <span>cycle count</span><span><b>FC1</b> machine run / fault</span><span>VFD Hz &amp; load</span><span>reject counter</span>
+          <span>reject counter</span><span>spindle load</span><span>oven temp</span><span>run hours</span>
         </div>
       </div>
 
@@ -533,8 +551,14 @@
         <div class="ic">⚡</div>
         <h3>Energy &amp; tenant submetering</h3>
         <p>Poll power meters across a site and publish kWh totals, voltage, current, and power factor in engineering units — the per-tag multiplier turns raw counts into billable figures before they ever leave the gateway.</p>
+        <div class="mini">
+          <div class="mh">Devices table → broker</div>
+<pre>FC3 30002 ×.01 → <span class="t">kwh_total</span> <span class="n">10432.75</span>
+FC3 30010 ×0.1 → <span class="t">volts_l1</span>    <span class="n">231.4</span>
+FC3 30016 ×.01 → <span class="t">power_fact</span>   <span class="n">0.98</span></pre>
+        </div>
         <div class="tags">
-          <span>kWh total</span><span>V / A per phase</span><span>power factor</span><span>demand peak</span>
+          <span>current per phase</span><span>demand peak</span><span>frequency</span><span>kVArh</span>
         </div>
       </div>
 
@@ -542,8 +566,14 @@
         <div class="ic">💧</div>
         <h3>Water, wastewater &amp; pump stations</h3>
         <p>Unmanned sites with flow meters, pressure and level transmitters, and pump starters. The 10,000-sample on-device log keeps the history intact through a cellular or broker outage, so remote doesn't mean blind.</p>
+        <div class="mini">
+          <div class="mh">Devices table → broker</div>
+<pre>FC4 30007 ×1   → <span class="t">flow_rate</span>    <span class="n">18</span>
+FC3 40012 ×0.1 → <span class="t">tank_level</span>   <span class="n">62.5</span>
+FC1 00003      → <span class="t">pump_run</span>     <span class="n">1</span></pre>
+        </div>
         <div class="tags">
-          <span>flow rate &amp; totaliser</span><span>tank level</span><span>line pressure</span><span>pump run hours</span>
+          <span>flow totaliser</span><span>line pressure</span><span>pump run hours</span><span>motor current</span>
         </div>
       </div>
 
@@ -551,8 +581,14 @@
         <div class="ic">🌡️</div>
         <h3>Cold chain, food &amp; pharma</h3>
         <p>Temperature and humidity controllers on refrigeration plant, drying rooms, and storage. Every reading is timestamped against the device's SNTP-synced clock, then published for alerting and long-term retention.</p>
+        <div class="mini">
+          <div class="mh">Devices table → broker</div>
+<pre>FC3 40001 ×0.1 → <span class="t">chamber_t</span>   <span class="n">-18.6</span>
+FC3 40003 ×0.1 → <span class="t">humidity</span>     <span class="n">41.2</span>
+FC2 10005      → <span class="t">door_alarm</span>   <span class="n">0</span></pre>
+        </div>
         <div class="tags">
-          <span>chamber temp</span><span>humidity</span><span>defrost state</span><span>door / alarm bits</span>
+          <span>defrost state</span><span>evaporator temp</span><span>compressor run</span><span>setpoint deviation</span>
         </div>
       </div>
 
@@ -560,8 +596,14 @@
         <div class="ic">☀️</div>
         <h3>Solar, storage &amp; generators</h3>
         <p>String and hybrid inverters, battery management systems, and genset controllers all expose Modbus RTU. Feed DC and AC power, state of charge, fuel level, and alarm registers into an O&amp;M portal over TLS.</p>
+        <div class="mini">
+          <div class="mh">Devices table → broker</div>
+<pre>FC3 40072 ×1   → <span class="t">dc_power</span>     <span class="n">4820</span>
+FC3 40085 ×1   → <span class="t">soc</span>          <span class="n">78</span>
+FC1 00021      → <span class="t">inv_fault</span>    <span class="n">0</span></pre>
+        </div>
         <div class="tags">
-          <span>DC / AC power</span><span>state of charge</span><span>fuel level</span><span>fault registers</span>
+          <span>AC export kW</span><span>string voltage</span><span>genset fuel level</span><span>run hours</span>
         </div>
       </div>
     </div>
