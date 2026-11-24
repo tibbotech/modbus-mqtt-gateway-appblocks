@@ -58,7 +58,8 @@
             "mwiwv8tbqht2m8u3r",
             "mwiwv98jrz6ptiwdg5",
             "mwiwv9po80zyciyb91",
-            "mwiwwowt0n9ayppnr9o"
+            "mwiwwowt0n9ayppnr9o",
+            "mwt5lc8nc2cqcukmg1i"
         ],
         "mwlij6fdhxsv9bf933a": [
             "mwipvteogztkip0r7j"
@@ -86,7 +87,7 @@
         },
         {
             "id": "mwipt22avru7zeyp2hb",
-            "name": "Modbus MQTT Cellular SA",
+            "name": "Modbus MQTT Cell SA",
             "partNumber": "mb-mqtt-cell-sa",
             "description": "",
             "flags": {
@@ -111,7 +112,7 @@
         },
         {
             "id": "mwlikmz3fau59u8p3a4",
-            "name": "Modbus MQTT Cellular E",
+            "name": "Modbus MQTT Cell E",
             "partNumber": "mb-mqtt-cell-e",
             "description": "",
             "flags": {
@@ -125,7 +126,7 @@
         },
         {
             "id": "mwlin9lory5s13ef8lo",
-            "name": "Modbus MQTT Cellular A",
+            "name": "Modbus MQTT Cell A",
             "partNumber": "mb-mqtt-cell-a",
             "description": "",
             "flags": {
@@ -3801,7 +3802,7 @@
                 "DISPLAY_NAME": "",
                 "FEATURE": "",
                 "X": 75,
-                "Y": 225,
+                "Y": 285,
                 "INPUTS": [
                     {
                         "id": "node_port",
@@ -6054,7 +6055,7 @@
         {
             "id": "custom_feature_id",
             "settings": {
-                "ENABLED": "1",
+                "ENABLED": "0",
                 "ID": "ms002ypf3b558il977r"
             }
         },
@@ -6309,7 +6310,7 @@
             "settings": {
                 "ID": "mwiwdlicht7b4dqe9nc",
                 "ENABLED": "1",
-                "MODULE": "WA2000C"
+                "MODULE": "WA2000U"
             }
         },
         {
@@ -6524,9 +6525,159 @@
         {
             "id": "websocket_client",
             "settings": {
-                "ID": "mwn6wbo9pvs2525408a",
+                "ID": "mwoc57vlezcxzfh47sm",
                 "ENABLED": "0",
                 "CONNECTIONS": []
+            }
+        },
+        {
+            "id": "node_pat",
+            "settings": {
+                "ID": "mwofh6m565bwh8ua3rf",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": 450,
+                "Y": 405,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "",
+                "ARGUMENTS": [
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwofh6m540p1cemaago",
+                            "ARGVALUE": "R~",
+                            "TARGETPARAM": "patternstring"
+                        }
+                    }
+                ],
+                "CANINT": "PL_PAT_CANINT"
+            }
+        },
+        {
+            "id": "node_link",
+            "settings": {
+                "ID": "mwofh6m57l7s19muvuu",
+                "SOURCE": "",
+                "SOURCE_FEATURE": "mruc1kwub9esrimd9d",
+                "SOURCE_PORT": "boot",
+                "TARGET": "",
+                "TARGET_FEATURE": "mwofh6m565bwh8ua3rf",
+                "TARGET_PORT": "pat.play",
+                "ARGUMENTS": []
+            }
+        },
+        {
+            "id": "node_mqtt_change",
+            "settings": {
+                "ID": "mwofhlp8n2padodc0d",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": 210,
+                "Y": -600,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "mrzoj5roqr4z6sosmdl",
+                "ARGUMENTS": [],
+                "CHANGE_TYPE": "1"
+            }
+        },
+        {
+            "id": "node_pat",
+            "settings": {
+                "ID": "mwofhqi5wit99w3ocp",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": 570,
+                "Y": -600,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "mrzoj5roqr4z6sosmdl",
+                "ARGUMENTS": [
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwofhqi57rvb7f35ik3",
+                            "ARGVALUE": "G~",
+                            "TARGETPARAM": "patternstring"
+                        }
+                    }
+                ],
+                "CANINT": "PL_PAT_CANINT"
+            }
+        },
+        {
+            "id": "node_link",
+            "settings": {
+                "ID": "mwofhqi5mu7iupgwsb",
+                "SOURCE": "",
+                "SOURCE_FEATURE": "mwofhlp8n2padodc0d",
+                "SOURCE_PORT": "mqtt_state_change",
+                "TARGET": "",
+                "TARGET_FEATURE": "mwofhqi5wit99w3ocp",
+                "TARGET_PORT": "pat.play",
+                "ARGUMENTS": []
+            }
+        },
+        {
+            "id": "node_mqtt_change",
+            "settings": {
+                "ID": "mwofhwtoj6o294k1kmc",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": 210,
+                "Y": -480,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "mrzoj5roqr4z6sosmdl",
+                "ARGUMENTS": [],
+                "CHANGE_TYPE": "0"
+            }
+        },
+        {
+            "id": "node_pat",
+            "settings": {
+                "ID": "mwofi1gbhxh90cgc3ov",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": 570,
+                "Y": -480,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "mrzoj5roqr4z6sosmdl",
+                "ARGUMENTS": [
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwofi1gclpqvwt2kynq",
+                            "ARGVALUE": "R~",
+                            "TARGETPARAM": "patternstring"
+                        }
+                    }
+                ],
+                "CANINT": "PL_PAT_CANINT"
+            }
+        },
+        {
+            "id": "node_link",
+            "settings": {
+                "ID": "mwofi1gcg1vzmjaqgld",
+                "SOURCE": "",
+                "SOURCE_FEATURE": "mwofhwtoj6o294k1kmc",
+                "SOURCE_PORT": "mqtt_state_change",
+                "TARGET": "",
+                "TARGET_FEATURE": "mwofi1gbhxh90cgc3ov",
+                "TARGET_PORT": "pat.play",
+                "ARGUMENTS": []
+            }
+        },
+        {
+            "id": "tibbit_37",
+            "settings": {
+                "ID": "mwt5lc8nc2cqcukmg1i",
+                "SOCKET": "13",
+                "TIBBIT": "37",
+                "PLATFORM": ""
             }
         }
     ]
