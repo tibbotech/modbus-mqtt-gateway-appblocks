@@ -1,25 +1,143 @@
 {
-    "id": "6a7027cef9549288e8b5f72b",
-    "name": "ModbusMQTTGateway",
-    "device": "TPP2W(G2)",
+    "name": "ModbusMQTTGatewayG3",
+    "device": "TPP2W(G3)",
     "description": "",
     "shortDescription": "",
     "version": "0.1.19",
     "runtime": "zephyr",
     "featureFlags": [
         {
-            "id": "ms08dos90gf518z01hgv",
-            "name": "MQTT Enabled",
+            "id": "mwipteeyrswqv09vfle",
+            "name": "Cellular",
+            "enabled": false
+        },
+        {
+            "id": "mwipth965phnz6umzqj",
+            "name": "Wi-Fi",
+            "enabled": false
+        },
+        {
+            "id": "mwiq1wjxvufeksajrr",
+            "name": "Normal Power",
             "enabled": true
+        },
+        {
+            "id": "mwlij6fdhxsv9bf933a",
+            "name": "Cellular SA",
+            "enabled": false
+        },
+        {
+            "id": "mwlijbdcg7ted6kj82",
+            "name": "Cellular E",
+            "enabled": false
+        },
+        {
+            "id": "mwlijfy2kcmfcyjq2rn",
+            "name": "Cellular A",
+            "enabled": false
         }
     ],
     "featureFlagMap": {
-        "ms08dos90gf518z01hgv": [
-            "mrzojdy4yn2pf7crc4",
-            "mrubrq7paiw1hmfo1bm",
-            "mrzolwzhsmfwfzngvbn"
+        "mwipteeyrswqv09vfle": [
+            "mrubrq7om0lm1x7reyj",
+            "mwliqdh2riymvq4dqv",
+            "mwliqf26sf6svk1wnxg",
+            "mwlkqlpiggauhknekkb"
+        ],
+        "mwiq1wjxvufeksajrr": [
+            "mwitqg9am565ruypbnk",
+            "mwitqefg49etpbsi4aq"
+        ],
+        "mwipth965phnz6umzqj": [
+            "mwiwdlicht7b4dqe9nc",
+            "mwiwdoulqyo4g87uqx",
+            "mwiwv6tedmxwq20v3hv",
+            "mwiwv7ed79348vloix5",
+            "mwiwv7vhdgu6vj5wzev",
+            "mwiwv8awnjv8kurfp4g",
+            "mwiwv8tbqht2m8u3r",
+            "mwiwv98jrz6ptiwdg5",
+            "mwiwv9po80zyciyb91",
+            "mwiwwowt0n9ayppnr9o"
+        ],
+        "mwlij6fdhxsv9bf933a": [
+            "mwipvteogztkip0r7j"
+        ],
+        "mwlijbdcg7ted6kj82": [
+            "mwlilwnili7i1sg5tnf"
+        ],
+        "mwlijfy2kcmfcyjq2rn": [
+            "mwlinxujo0375t1lu3"
         ]
     },
+    "skus": [
+        {
+            "id": "mwipsepvvv4z6jra49",
+            "name": "Modbus MQTT Ethernet",
+            "partNumber": "mb-mqtt-eth",
+            "description": "",
+            "flags": {
+                "mwipteeyrswqv09vfle": false,
+                "mwipth965phnz6umzqj": false,
+                "mwlij6fdhxsv9bf933a": false,
+                "mwlijbdcg7ted6kj82": false,
+                "mwlijfy2kcmfcyjq2rn": false
+            }
+        },
+        {
+            "id": "mwipt22avru7zeyp2hb",
+            "name": "Modbus MQTT Cellular SA",
+            "partNumber": "mb-mqtt-cell-sa",
+            "description": "",
+            "flags": {
+                "mwipth965phnz6umzqj": false,
+                "mwiq1wjxvufeksajrr": false,
+                "mwlijbdcg7ted6kj82": false,
+                "mwlijfy2kcmfcyjq2rn": false
+            }
+        },
+        {
+            "id": "mwiptqe42e5yhamm0j6",
+            "name": "Modbus MQTT Wi-Fi",
+            "partNumber": "mb-mqtt-wifi",
+            "description": "",
+            "flags": {
+                "mwipteeyrswqv09vfle": false,
+                "mwipth965phnz6umzqj": true,
+                "mwlij6fdhxsv9bf933a": false,
+                "mwlijbdcg7ted6kj82": false,
+                "mwlijfy2kcmfcyjq2rn": false
+            }
+        },
+        {
+            "id": "mwlikmz3fau59u8p3a4",
+            "name": "Modbus MQTT Cellular E",
+            "partNumber": "mb-mqtt-cell-e",
+            "description": "",
+            "flags": {
+                "mwipteeyrswqv09vfle": true,
+                "mwipth965phnz6umzqj": false,
+                "mwiq1wjxvufeksajrr": false,
+                "mwlij6fdhxsv9bf933a": false,
+                "mwlijbdcg7ted6kj82": true,
+                "mwlijfy2kcmfcyjq2rn": false
+            }
+        },
+        {
+            "id": "mwlin9lory5s13ef8lo",
+            "name": "Modbus MQTT Cellular A",
+            "partNumber": "mb-mqtt-cell-a",
+            "description": "",
+            "flags": {
+                "mwipteeyrswqv09vfle": true,
+                "mwipth965phnz6umzqj": false,
+                "mwiq1wjxvufeksajrr": false,
+                "mwlij6fdhxsv9bf933a": false,
+                "mwlijbdcg7ted6kj82": false,
+                "mwlijfy2kcmfcyjq2rn": true
+            }
+        }
+    ],
     "features": [
         {
             "id": "boardsetting",
@@ -30,23 +148,30 @@
                 "WIFIANTENNA": "0",
                 "GPRSANTENNA": "0",
                 "TPB": "true",
-                "VPK": "1",
+                "VPK": "0",
                 "DIN": "1",
                 "POWERADAPTER": "apr-p0008",
                 "ASM": "asm+rp",
-                "NOTES": ""
+                "NOTES": "",
+                "TIBBIT_STASH": ""
             }
         },
         {
             "id": "general",
             "settings": {
                 "ID": "mquecbkttwt2hgq703",
+                "GENERAL": "",
+                "ADVANCED": "",
                 "DEVICE_NAME": "Device_Name_1",
-                "FIRMWAREVERSION": "1.0.0",
+                "FIRMWAREVERSION": "1.0.1",
                 "TIMEZONE": "27",
+                "DST": "0",
                 "LATITUDE": "0",
                 "LONGITUDE": "0",
-                "LOGGING": "sys.debugprint"
+                "LOGGING": "sys.debugprint",
+                "LOG_CONTROL": "1",
+                "LOG_DEBUG_MODULES": "all",
+                "PRJ_CONF": ""
             }
         },
         {
@@ -443,7 +568,7 @@
                             "FEATURE": "mrzo7g3tyb6fojffkcn",
                             "FEATURE_SETTING": "SETTINGID",
                             "MINIMUM": "0",
-                            "MAXIMUM": 50,
+                            "MAXIMUM": 100,
                             "DEFAULT": "1.0.0.1",
                             "POLL_INTERVAL": ""
                         }
@@ -582,6 +707,246 @@
                             "DEFAULT": "",
                             "POLL_INTERVAL": ""
                         }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "msya2e9bv9cubrdd72g",
+                            "VARNAME": "MQTTKA",
+                            "DATATYPE": "float",
+                            "NAME": "MQTT Keep Alive Interval",
+                            "FEATURE": "msya2dxkxfqbbxt8uha",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": 0,
+                            "MAXIMUM": 65535,
+                            "DEFAULT": "30",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwiwv6z9hxiuu6ovfmm",
+                            "VARNAME": "WIFCP",
+                            "DATATYPE": "float",
+                            "NAME": "Wifi DHCP",
+                            "FEATURE": "mwiwv6tedmxwq20v3hv",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": 0,
+                            "MAXIMUM": 1,
+                            "DEFAULT": "1",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwiwv7qsixw6ozupnx",
+                            "VARNAME": "WIFIP",
+                            "DATATYPE": "string",
+                            "NAME": "Wifi IP",
+                            "FEATURE": "mwiwv7ed79348vloix5",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": 16,
+                            "DEFAULT": "1.0.0.1",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwiwv84kyye78995g",
+                            "VARNAME": "WIFNM",
+                            "DATATYPE": "string",
+                            "NAME": "Wifi Netmask",
+                            "FEATURE": "mwiwv7vhdgu6vj5wzev",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": 16,
+                            "DEFAULT": "255.255.255.0",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwiwv8ibg67w9y31kng",
+                            "VARNAME": "WIFGW",
+                            "DATATYPE": "string",
+                            "NAME": "Wifi Gateway",
+                            "FEATURE": "mwiwv8awnjv8kurfp4g",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": 16,
+                            "DEFAULT": "1.0.0.1",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwiwv8wvrhgitj1zee",
+                            "VARNAME": "WIFAP",
+                            "DATATYPE": "string",
+                            "NAME": "Wifi AP SSID",
+                            "FEATURE": "mwiwv8tbqht2m8u3r",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": 32,
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwiwv9c6pyakzd0fu9i",
+                            "VARNAME": "WSEC",
+                            "DATATYPE": "string",
+                            "NAME": "Wifi Security",
+                            "FEATURE": "mwiwv98jrz6ptiwdg5",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": 0,
+                            "MAXIMUM": 1,
+                            "DEFAULT": "7",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwiwva2pqnjhr7qeha",
+                            "VARNAME": "WIFPW",
+                            "DATATYPE": "string",
+                            "NAME": "Wifi Password",
+                            "FEATURE": "mwiwv9po80zyciyb91",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": 0,
+                            "MAXIMUM": 64,
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwlkogfm74od77ssiob",
+                            "VARNAME": "MQTCCF",
+                            "DATATYPE": "string",
+                            "NAME": "MQTT Client Certificate File Path",
+                            "FEATURE": "mwlkog2ek6kvcrayjh",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": 64,
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwlkqvylaujklbup915",
+                            "VARNAME": "CELLAPN",
+                            "DATATYPE": "string",
+                            "NAME": "Cellular Access Point Name",
+                            "FEATURE": "mwlkqviu6yffkgwf39f",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": "80",
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwlkqwc9p2x1fjngyea",
+                            "VARNAME": "CELLUN",
+                            "DATATYPE": "string",
+                            "NAME": "PPP Username",
+                            "FEATURE": "mwlkqvwi1393ab06dbg",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": 0,
+                            "MAXIMUM": 50,
+                            "DEFAULT": "myusername@realm",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwlkqwq3gpqwj4mcxhr",
+                            "VARNAME": "CELLPW",
+                            "DATATYPE": "string",
+                            "NAME": "PPP Password",
+                            "FEATURE": "mwlkqwa43zw8ya73pdr",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": 0,
+                            "MAXIMUM": 50,
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwlkqx3s75u0r4tugmn",
+                            "VARNAME": "CELLPIN",
+                            "DATATYPE": "string",
+                            "NAME": "SIM Card Pin",
+                            "FEATURE": "mwlkqwvni5y6inugta",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": 0,
+                            "MAXIMUM": 10,
+                            "DEFAULT": "?",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwls8minpp6vad9la1",
+                            "VARNAME": "DN",
+                            "DATATYPE": "string",
+                            "NAME": "Device Name",
+                            "FEATURE": "mwls8m8citpi6nfv8i",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": "8",
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwls8min0yashuiqcynh",
+                            "VARNAME": "ON",
+                            "DATATYPE": "string",
+                            "NAME": "Owner Name",
+                            "FEATURE": "mwls8m8d4givx050cfi",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": "8",
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwls8minskz184s5rqp",
+                            "VARNAME": "PW",
+                            "DATATYPE": "string",
+                            "NAME": "Password",
+                            "FEATURE": "mwls8m8db09n83vlz9",
+                            "FEATURE_SETTING": "SETTINGID",
+                            "MINIMUM": "0",
+                            "MAXIMUM": "16",
+                            "DEFAULT": "",
+                            "POLL_INTERVAL": ""
+                        }
                     }
                 ]
             }
@@ -611,6 +976,8 @@
                             "BUILTINID": "flash0",
                             "LINKED_FEATURE": "",
                             "FLASH_DEVICE_NAME": "flash0",
+                            "LABEL": "",
+                            "PATH": "",
                             "PARTITIONS": [
                                 {
                                     "id": "flash_partition",
@@ -630,11 +997,13 @@
                         "id": "flash_device",
                         "settings": {
                             "ID": "mrubri0klfywzjonti",
-                            "NAME": "at45db081e",
+                            "NAME": "at45db321e",
                             "BUILTIN": "1",
-                            "BUILTINID": "at45db081e",
+                            "BUILTINID": "at45db321e",
                             "LINKED_FEATURE": "",
-                            "FLASH_DEVICE_NAME": "at45db081e",
+                            "FLASH_DEVICE_NAME": "at45db321e",
+                            "LABEL": "",
+                            "PATH": "",
                             "PARTITIONS": [
                                 {
                                     "id": "flash_partition",
@@ -979,7 +1348,7 @@
                             "SETTINGTYPE": "string",
                             "DATATYPE": "S",
                             "MIN": "",
-                            "MAX": 50,
+                            "MAX": 100,
                             "INITIALIZE": "A",
                             "DEFAULT": "1.0.0.1"
                         }
@@ -1119,6 +1488,278 @@
                             "INITIALIZE": "A",
                             "DEFAULT": ""
                         }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "msya2dxkxfqbbxt8uha",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "MQTTKA",
+                            "NAME": "MQTT Keep Alive Interval",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "float",
+                            "DATATYPE": "F",
+                            "MIN": 0,
+                            "MAX": 65535,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "30"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwiwv6tedmxwq20v3hv",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "WIFCP",
+                            "NAME": "Wifi DHCP",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "float",
+                            "DATATYPE": "F",
+                            "MIN": 0,
+                            "MAX": 1,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "1"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwiwv7ed79348vloix5",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "WIFIP",
+                            "NAME": "Wifi IP",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": 16,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "1.0.0.1"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwiwv7vhdgu6vj5wzev",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "WIFNM",
+                            "NAME": "Wifi Netmask",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": 16,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "255.255.255.0"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwiwv8awnjv8kurfp4g",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "WIFGW",
+                            "NAME": "Wifi Gateway",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": 16,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "1.0.0.1"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwiwv8tbqht2m8u3r",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "WIFAP",
+                            "NAME": "Wifi AP SSID",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": 32,
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwiwv98jrz6ptiwdg5",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "WSEC",
+                            "NAME": "Wifi Security",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": 0,
+                            "MAX": 1,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "7"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwiwv9po80zyciyb91",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "WIFPW",
+                            "NAME": "Wifi Password",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": 0,
+                            "MAX": 64,
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwlkog2ek6kvcrayjh",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "MQTCCF",
+                            "NAME": "MQTT Client Certificate File Path",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": 64,
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwlkqviu6yffkgwf39f",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "CELLAPN",
+                            "NAME": "Cellular Access Point Name",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": "",
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwlkqvwi1393ab06dbg",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "CELLUN",
+                            "NAME": "PPP Username",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": 0,
+                            "MAX": 50,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "myusername@realm"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwlkqwa43zw8ya73pdr",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "CELLPW",
+                            "NAME": "PPP Password",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": 0,
+                            "MAX": 50,
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwlkqwvni5y6inugta",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "CELLPIN",
+                            "NAME": "SIM Card Pin",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": 0,
+                            "MAX": 10,
+                            "INITIALIZE": "A",
+                            "DEFAULT": "?"
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwls8m8citpi6nfv8i",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "DN",
+                            "NAME": "Device Name",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": "8",
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwls8m8d4givx050cfi",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "ON",
+                            "NAME": "Owner Name",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": "8",
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
+                    },
+                    {
+                        "id": "stg_setting",
+                        "settings": {
+                            "ID": "mwls8m8db09n83vlz9",
+                            "GENERAL": "",
+                            "ADVANCED": "",
+                            "SETTINGID": "PW",
+                            "NAME": "Password",
+                            "STORAGE": "E",
+                            "SETTINGTYPE": "string",
+                            "DATATYPE": "S",
+                            "MIN": "",
+                            "MAX": "16",
+                            "INITIALIZE": "A",
+                            "DEFAULT": ""
+                        }
                     }
                 ]
             }
@@ -1241,7 +1882,9 @@
                                     }
                                 }
                             ],
-                            "IN_MEMORY_TABLE": "[]"
+                            "IN_MEMORY_TABLE": "[]",
+                            "INDEXFIELD": "",
+                            "STORAGE_PATH": "/lfs"
                         }
                     },
                     {
@@ -1282,7 +1925,9 @@
                                     }
                                 }
                             ],
-                            "IN_MEMORY_TABLE": "[]"
+                            "IN_MEMORY_TABLE": "[]",
+                            "INDEXFIELD": "",
+                            "STORAGE_PATH": "/lfs"
                         }
                     },
                     {
@@ -1323,7 +1968,9 @@
                                     }
                                 }
                             ],
-                            "IN_MEMORY_TABLE": "[]"
+                            "IN_MEMORY_TABLE": "[]",
+                            "INDEXFIELD": "",
+                            "STORAGE_PATH": "/lfs"
                         }
                     },
                     {
@@ -1377,7 +2024,9 @@
                                     }
                                 }
                             ],
-                            "IN_MEMORY_TABLE": "[]"
+                            "IN_MEMORY_TABLE": "[]",
+                            "INDEXFIELD": "",
+                            "STORAGE_PATH": "/lfs"
                         }
                     }
                 ],
@@ -1388,7 +2037,7 @@
             "id": "cell",
             "settings": {
                 "ID": "mrubrq7om0lm1x7reyj",
-                "ENABLED": "0",
+                "ENABLED": "1",
                 "CELL_MODE": "CELL__PPP_MODE_ISENABLED",
                 "CELL_APN": "",
                 "CELL_UN": "myusername@realm",
@@ -1426,7 +2075,6 @@
                 "MQTT_KEEPALIVE_INTERVAL": "30",
                 "MQTT_DEBUG_PRINT": "1",
                 "CERTIFICATEFILE": "",
-                "CERTIFICATE_PATH": "",
                 "CLIENT_CERTIFICATE_PATH": "",
                 "TOPICS": []
             }
@@ -1458,6 +2106,7 @@
                     }
                 ],
                 "INTERVAL": "1",
+                "MQTT_KEEPALIVE_INTERVAL": "60",
                 "TLS": "0",
                 "GROUPS": [
                     {
@@ -1487,8 +2136,10 @@
                 "RXBUF": "10",
                 "VARBUF": "1",
                 "ENDPOINTS": [],
+                "WEBSOCKETS": [],
                 "DEBUG_PRINT": "0",
-                "TLS_ENABLED": "0"
+                "TLS_ENABLED": "0",
+                "CERTIFICATEFILE": ""
             }
         },
         {
@@ -1532,7 +2183,8 @@
             "settings": {
                 "ID": "mrubrq7spks63m3sm2",
                 "ENABLED": "1",
-                "CONFIGS": "\nCONFIG_MBEDTLS_HEAP_SIZE=30000\nCONFIG_MBEDTLS_SSL_MAX_CONTENT_LEN=4096                \n"
+                "DEBUG": "0",
+                "CONFIGS": "# Suggested for httpbin.org:443 (suite: ECDHE-ECDSA-AES128-GCM-SHA256)\nCONFIG_MBEDTLS=y\nCONFIG_MBEDTLS_BUILTIN=y\nCONFIG_MBEDTLS_ENABLE_HEAP=y\nCONFIG_MBEDTLS_CIPHER_AES_ENABLED=y\nCONFIG_MBEDTLS_CIPHER_GCM_ENABLED=y\nCONFIG_MBEDTLS_ECDH_C=y\nCONFIG_MBEDTLS_ECDSA_C=y\nCONFIG_MBEDTLS_ECP_C=y\nCONFIG_MBEDTLS_ECP_DP_SECP256R1_ENABLED=y\nCONFIG_MBEDTLS_ECP_DP_SECP384R1_ENABLED=y\nCONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED=y\nCONFIG_MBEDTLS_PEM_CERTIFICATE_FORMAT=y\nCONFIG_MBEDTLS_PKCS1_V15=y\nCONFIG_MBEDTLS_SERVER_NAME_INDICATION=y\nCONFIG_MBEDTLS_SHA256=y\nCONFIG_MBEDTLS_SHA384=y\nCONFIG_MBEDTLS_TLS_VERSION_1_2=y\nCONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_RSA_ENABLED=y\nCONFIG_MBEDTLS_RSA_C=y\n# handshake needs >= 3485; server ignores MFL, so a response bigger than this can arrive as a record up to 16384. Use 16384 unless responses are known to be small\nCONFIG_MBEDTLS_SSL_MAX_CONTENT_LEN=8192\nCONFIG_MBEDTLS_HEAP_SIZE=32768\nCONFIG_MBEDTLS_SSL_IN_CONTENT_LEN=8192\nCONFIG_MBEDTLS_SSL_OUT_CONTENT_LEN=2048\n"
             }
         },
         {
@@ -1565,6 +2217,7 @@
                 "ID": "mrubrq7thy56poqyyzm",
                 "GENERAL": "",
                 "AUTH": "",
+                "TEMPLATE": "",
                 "ADVANCED": "",
                 "ENABLED": "0",
                 "SERVER": "",
@@ -1574,6 +2227,7 @@
                 "AUTH_METHOD": "login",
                 "USERNAME": "",
                 "PASSWORD": "",
+                "HTML_TEMPLATE": "",
                 "TIMEOUT": "10000",
                 "LOG_LEVEL": "3"
             }
@@ -1609,10 +2263,12 @@
                 "GENERAL": "",
                 "IMAGES_GROUP": "",
                 "SETTINGS": "",
+                "TABLES_GROUP": "",
                 "ENABLED": "0",
                 "BACKCOLOR": "#000000",
                 "FORECOLOR": "#ffffff",
                 "LOGFONT": "LCD_SMALL_FONT",
+                "DISPLAY_REFRESH_MS": "30",
                 "WIDGETS": [],
                 "SCREENS": [],
                 "IMAGES": [],
@@ -1628,7 +2284,8 @@
                             "SETTINGS": []
                         }
                     }
-                ]
+                ],
+                "TABLES": []
             }
         },
         {
@@ -2552,6 +3209,330 @@
                                         "STATUS": "",
                                         "READONLY": "0"
                                     }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwlkotmhf29m3555jql",
+                                        "SETTINGID": "mwlkog2ek6kvcrayjh",
+                                        "NAME": "MQTT Client Certificate File Path",
+                                        "CONTROL": "FILE",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwlkotmhxqis3w9wz4",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "luis_group",
+                        "settings": {
+                            "ID": "mwiwwowt0n9ayppnr9o",
+                            "GROUPID": "webgroup4",
+                            "NAME": "Wi-Fi",
+                            "SETTINGS": [
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwiwxlyrpbgg50fhead",
+                                        "SETTINGID": "mwiwv8tbqht2m8u3r",
+                                        "NAME": "Wifi AP SSID",
+                                        "CONTROL": "EDIT",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxlyre8puzu0ynfw",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwiwxxkb5soeqvx5eva",
+                                        "SETTINGID": "mwiwv98jrz6ptiwdg5",
+                                        "NAME": "Wifi Security",
+                                        "CONTROL": "STATIC",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzowbdgherb1138",
+                                                    "LABEL": "Disabled",
+                                                    "VALUE": "0"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzowzrk24xwr0q8",
+                                                    "LABEL": "WEP64",
+                                                    "VALUE": "1"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzow7im7wqu3o3u",
+                                                    "LABEL": "WEP128",
+                                                    "VALUE": "2"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzowm71zyp6351n",
+                                                    "LABEL": "WPA1-PSK (TKIP)",
+                                                    "VALUE": "3"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzow6jhsm4tp6la",
+                                                    "LABEL": "WPA1-PSK (AES)",
+                                                    "VALUE": "4"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzowdgaf8up9e2u",
+                                                    "LABEL": "WPA2-PSK (TKIP)",
+                                                    "VALUE": "5"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzow0h530m3agh8",
+                                                    "LABEL": "WPA2-PSK (AES)",
+                                                    "VALUE": "6"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxzowupp92yd00y",
+                                                    "LABEL": "AUTO",
+                                                    "VALUE": "7"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwiwxq6fchkgnr3drjf",
+                                        "SETTINGID": "mwiwv9po80zyciyb91",
+                                        "NAME": "Wifi Password",
+                                        "CONTROL": "PASSWORD",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxq6f35da8vnt2if",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwiwx0wwzpsn7c6k31",
+                                        "SETTINGID": "mwiwv6tedmxwq20v3hv",
+                                        "NAME": "Wifi DHCP",
+                                        "CONTROL": "STATIC",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwx4fh67k5i0ptd2y",
+                                                    "LABEL": "Disabled",
+                                                    "VALUE": "0"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwx4fhr9znwfg7gc",
+                                                    "LABEL": "Enabled",
+                                                    "VALUE": "1"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwiwx7aa18axwmzatr",
+                                        "SETTINGID": "mwiwv7ed79348vloix5",
+                                        "NAME": "Wifi IP",
+                                        "CONTROL": "IPCTRL",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwx7aaa6mkn6kv45b",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwiwxc3ayabplt1p87c",
+                                        "SETTINGID": "mwiwv7vhdgu6vj5wzev",
+                                        "NAME": "Wifi Netmask",
+                                        "CONTROL": "IPCTRL",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxc3av4z9xxxpu39",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwiwxhqa5iejysy90jn",
+                                        "SETTINGID": "mwiwv8awnjv8kurfp4g",
+                                        "NAME": "Wifi Gateway",
+                                        "CONTROL": "IPCTRL",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwiwxhqack90rhb8moe",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "luis_group",
+                        "settings": {
+                            "ID": "mwlkqlpiggauhknekkb",
+                            "GROUPID": "webgroup5",
+                            "NAME": "Cellular",
+                            "SETTINGS": [
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwlkr4i0r7351trbtqf",
+                                        "SETTINGID": "mwlkqviu6yffkgwf39f",
+                                        "NAME": "Cellular Access Point Name",
+                                        "CONTROL": "EDIT",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwlkr4i0s73rtwz1q7",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwlkrkjtyjcwbrgkjaj",
+                                        "SETTINGID": "mwlkqwvni5y6inugta",
+                                        "NAME": "SIM Card Pin",
+                                        "CONTROL": "EDIT",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwlkrkjtypkgbivy9op",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
                                 }
                             ]
                         }
@@ -2582,7 +3563,8 @@
                         "settings": {
                             "ID": "mrue7dk1a7jcpmhlmf7",
                             "TABLE": "mrubsnak9lbxidrcn1i",
-                            "NAME": ""
+                            "NAME": "",
+                            "COLUMNS": ""
                         }
                     },
                     {
@@ -2590,7 +3572,8 @@
                         "settings": {
                             "ID": "mrue7hlsks53w7no9hi",
                             "TABLE": "mrubxr360bwrb2fx4stl",
-                            "NAME": ""
+                            "NAME": "",
+                            "COLUMNS": ""
                         }
                     },
                     {
@@ -2598,7 +3581,8 @@
                         "settings": {
                             "ID": "mruf9c7klefw2jh7lrn",
                             "TABLE": "mruf9bu96wfeskj68a7",
-                            "NAME": ""
+                            "NAME": "",
+                            "COLUMNS": ""
                         }
                     },
                     {
@@ -2606,7 +3590,8 @@
                         "settings": {
                             "ID": "mrufa220lwsitgc0pwd",
                             "TABLE": "mruf9n2gt7rgzpcj9t9",
-                            "NAME": ""
+                            "NAME": "",
+                            "COLUMNS": ""
                         }
                     }
                 ],
@@ -2631,8 +3616,75 @@
             "id": "ds_man",
             "settings": {
                 "ID": "mrubrq7xu2hhyy4utwf",
-                "ENABLED": "0",
-                "GROUPS": []
+                "ENABLED": "1",
+                "GROUPS": [
+                    {
+                        "id": "luis_group",
+                        "settings": {
+                            "ID": "mwls8o0d0e1avrxbd5b",
+                            "GROUPID": "dsgroup1",
+                            "NAME": "General",
+                            "SETTINGS": [
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwls8quk0cox2cag7dik",
+                                        "SETTINGID": "mrzt1rujl4lgn820yvi",
+                                        "NAME": "Ethernet DHCP",
+                                        "CONTROL": "STATIC",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwls9fi2tfma8c1c8y",
+                                                    "LABEL": "Disabled",
+                                                    "VALUE": "0"
+                                                }
+                                            },
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwls9fi2tht0f54v2k9",
+                                                    "LABEL": "Enabled",
+                                                    "VALUE": "1"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                },
+                                {
+                                    "id": "luis_item",
+                                    "settings": {
+                                        "ID": "mwls9i1m6gzyrktwn98",
+                                        "SETTINGID": "mrzt1sdhn1vc0rp5zup",
+                                        "NAME": "Ethernet IP",
+                                        "CONTROL": "IPCTRL",
+                                        "OPTIONS": [
+                                            {
+                                                "id": "luis_item_option",
+                                                "settings": {
+                                                    "ID": "mwls9i1mg1xgzvimlag",
+                                                    "LABEL": "OPTION_LABEL",
+                                                    "VALUE": "0"
+                                                }
+                                            }
+                                        ],
+                                        "FILEDIR": "/lfs",
+                                        "FILEACCEPT": "",
+                                        "VALIDATION": "",
+                                        "STATUS": "",
+                                        "READONLY": "0"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
         },
         {
@@ -4177,26 +5229,6 @@
             }
         },
         {
-            "id": "tibbit_33",
-            "settings": {
-                "ID": "mrugtu4kfx0wgt59t05",
-                "SOCKET": "11",
-                "TIBBIT": "33",
-                "PLATFORM": "",
-                "GENERAL": "",
-                "PF": "1"
-            }
-        },
-        {
-            "id": "tibbit_18",
-            "settings": {
-                "ID": "mrugtw45o0mlklquzjo",
-                "SOCKET": "12",
-                "TIBBIT": "18",
-                "PLATFORM": ""
-            }
-        },
-        {
             "id": "linked_setting",
             "settings": {
                 "ID": "mrymiqfm057j0qm71hef",
@@ -4716,7 +5748,8 @@
                             "TARGETPARAM": "retain"
                         }
                     }
-                ]
+                ],
+                "PAYLOAD_BUFFER": ""
             }
         },
         {
@@ -5107,7 +6140,7 @@
             "id": "linked_setting",
             "settings": {
                 "ID": "ms8cv2bxfcinszvhzvp",
-                "SETTINGID": "CERTIFICATE_PATH",
+                "SETTINGID": "CERTIFICATEFILE",
                 "LINKEDSETTING": "ms8cv2bgm1i6zwe7krn",
                 "FEATURE": "mrubrq7paiw1hmfo1bm"
             }
@@ -5219,6 +6252,281 @@
                 "TARGET_FEATURE": "ms8e4osozj6e4qhi8wd",
                 "TARGET_PORT": "tbl_add",
                 "ARGUMENTS": []
+            }
+        },
+        {
+            "id": "firmware_upgrade",
+            "settings": {
+                "ID": "msr8iwxr17yuqmgm0m2",
+                "ENABLED": "0"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "msya2dz7fnlvbjniz86",
+                "SETTINGID": "MQTT_KEEPALIVE_INTERVAL",
+                "LINKEDSETTING": "msya2dxkxfqbbxt8uha",
+                "FEATURE": "mrubrq7paiw1hmfo1bm"
+            }
+        },
+        {
+            "id": "gpio_matrix",
+            "settings": {
+                "ID": "mwipmfxihq0m6u6tjo8",
+                "MATRICES": []
+            }
+        },
+        {
+            "id": "tibbit_45_1",
+            "settings": {
+                "ID": "mwipvteogztkip0r7j",
+                "SOCKET": "9",
+                "TIBBIT": "45_1",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "tibbit_10",
+            "settings": {
+                "ID": "mwitqefg49etpbsi4aq",
+                "SOCKET": "11",
+                "TIBBIT": "10",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "tibbit_18",
+            "settings": {
+                "ID": "mwitqg9am565ruypbnk",
+                "SOCKET": "12",
+                "TIBBIT": "18",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "wireless_module",
+            "settings": {
+                "ID": "mwiwdlicht7b4dqe9nc",
+                "ENABLED": "1",
+                "MODULE": "WA2000C"
+            }
+        },
+        {
+            "id": "wln",
+            "settings": {
+                "ID": "mwiwdlv1oyi459dkpjo"
+            }
+        },
+        {
+            "id": "wifi",
+            "settings": {
+                "ID": "mwiwdoulqyo4g87uqx",
+                "ENABLED": "1",
+                "MODE": "station",
+                "DHCP": "1",
+                "IP": "1.0.0.1",
+                "NETMASK": "255.255.255.0",
+                "GATEWAY": "1.0.0.1",
+                "WAP": "",
+                "WSEC": "7",
+                "WPW": ""
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwiwv6ulj2zpe0o741",
+                "SETTINGID": "DHCP",
+                "LINKEDSETTING": "mwiwv6tedmxwq20v3hv",
+                "FEATURE": "mwiwdoulqyo4g87uqx"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwiwv7eu0vxneorcaa2q",
+                "SETTINGID": "IP",
+                "LINKEDSETTING": "mwiwv7ed79348vloix5",
+                "FEATURE": "mwiwdoulqyo4g87uqx"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwiwv7vy8steiw5x44j",
+                "SETTINGID": "NETMASK",
+                "LINKEDSETTING": "mwiwv7vhdgu6vj5wzev",
+                "FEATURE": "mwiwdoulqyo4g87uqx"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwiwv8bbzvct5ykad2",
+                "SETTINGID": "GATEWAY",
+                "LINKEDSETTING": "mwiwv8awnjv8kurfp4g",
+                "FEATURE": "mwiwdoulqyo4g87uqx"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwiwv8u8cwxnt6ddvar",
+                "SETTINGID": "WAP",
+                "LINKEDSETTING": "mwiwv8tbqht2m8u3r",
+                "FEATURE": "mwiwdoulqyo4g87uqx"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwiwv993wkxlutlcbf",
+                "SETTINGID": "WSEC",
+                "LINKEDSETTING": "mwiwv98jrz6ptiwdg5",
+                "FEATURE": "mwiwdoulqyo4g87uqx"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwiwv9pxl7lgzgbjsb",
+                "SETTINGID": "WPW",
+                "LINKEDSETTING": "mwiwv9po80zyciyb91",
+                "FEATURE": "mwiwdoulqyo4g87uqx"
+            }
+        },
+        {
+            "id": "azure",
+            "settings": {
+                "ID": "mwliiz1oq3q7z130tcl",
+                "ENABLED": "0",
+                "AZURE_INTERFACE": "PL_SOCK_INTERFACE_NET",
+                "AZURE_DEBUG_PRINT": "0",
+                "AZURE_DEVICE_NAME": "Device_Name_1",
+                "AZURE_DEVICE_ID": "Device_ID_1",
+                "AZURE_SCOPE_ID": "Scope_ID_1",
+                "AZURE_DPS_SERVER": "global.azure-devices-provisioning.net",
+                "AZURE_PRIMARY_KEY": "Primary_Key_1",
+                "TELEMETRY": [
+                    {
+                        "id": "azure_telemetry",
+                        "settings": {
+                            "ID": "mwliiz1o6o0b4age2pr",
+                            "NAME": "Telemetry_Name",
+                            "TELEMETRY_ID": "Telemetry_ID"
+                        }
+                    }
+                ],
+                "PROPERTY": [
+                    {
+                        "id": "azure_property",
+                        "settings": {
+                            "ID": "mwliiz1o7trugnd466u",
+                            "NAME": "Property_Name",
+                            "PROPERTY_ID": ""
+                        }
+                    }
+                ],
+                "COMMAND": [
+                    {
+                        "id": "azure_command",
+                        "settings": {
+                            "ID": "mwliiz1ois0fk5vxfb9",
+                            "NAME": "Command_Name",
+                            "COMMAND_ID": "Command_ID"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "tibbit_45_2",
+            "settings": {
+                "ID": "mwlilwnili7i1sg5tnf",
+                "SOCKET": "9",
+                "TIBBIT": "45_2",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "tibbit_45_3",
+            "settings": {
+                "ID": "mwlinxujo0375t1lu3",
+                "SOCKET": "9",
+                "TIBBIT": "45_3",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "tibbit_25",
+            "settings": {
+                "ID": "mwliqdh2riymvq4dqv",
+                "SOCKET": "5",
+                "TIBBIT": "25",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "tibbit_18",
+            "settings": {
+                "ID": "mwliqf26sf6svk1wnxg",
+                "SOCKET": "6",
+                "TIBBIT": "18",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwlkog3anlioisa2fun",
+                "SETTINGID": "CLIENT_CERTIFICATE_PATH",
+                "LINKEDSETTING": "mwlkog2ek6kvcrayjh",
+                "FEATURE": "mrubrq7paiw1hmfo1bm"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwlkqvjhg5ow7yys8m",
+                "SETTINGID": "CELL_APN",
+                "LINKEDSETTING": "mwlkqviu6yffkgwf39f",
+                "FEATURE": "mrubrq7om0lm1x7reyj"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwlkqvwxg44q0wx2ktn",
+                "SETTINGID": "CELL_UN",
+                "LINKEDSETTING": "mwlkqvwi1393ab06dbg",
+                "FEATURE": "mrubrq7om0lm1x7reyj"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwlkqwakaw14hgi5gjs",
+                "SETTINGID": "CELL_PW",
+                "LINKEDSETTING": "mwlkqwa43zw8ya73pdr",
+                "FEATURE": "mrubrq7om0lm1x7reyj"
+            }
+        },
+        {
+            "id": "linked_setting",
+            "settings": {
+                "ID": "mwlkqww40t804d0ig19a",
+                "SETTINGID": "CELL_PIN",
+                "LINKEDSETTING": "mwlkqwvni5y6inugta",
+                "FEATURE": "mrubrq7om0lm1x7reyj"
+            }
+        },
+        {
+            "id": "websocket_client",
+            "settings": {
+                "ID": "mwn6wbo9pvs2525408a",
+                "ENABLED": "0",
+                "CONNECTIONS": []
             }
         }
     ]
