@@ -4745,15 +4745,6 @@
             }
         },
         {
-            "id": "tibbit_20",
-            "settings": {
-                "ID": "mrucxiznr3yjiuzxun",
-                "SOCKET": "2",
-                "TIBBIT": "20",
-                "PLATFORM": ""
-            }
-        },
-        {
             "id": "node_table_insert",
             "settings": {
                 "ID": "mrue4gco6svr4jcm816",
@@ -6677,6 +6668,15 @@
                 "ID": "mwt5lc8nc2cqcukmg1i",
                 "SOCKET": "13",
                 "TIBBIT": "37",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "tibbit_21",
+            "settings": {
+                "ID": "mwu3w118lces48bbca",
+                "SOCKET": "2",
+                "TIBBIT": "21",
                 "PLATFORM": ""
             }
         }
