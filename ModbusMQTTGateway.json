@@ -46,7 +46,7 @@
         ],
         "mwiq1wjxvufeksajrr": [
             "mwitqg9am565ruypbnk",
-            "mwitqefg49etpbsi4aq"
+            "mwvkhn00xmgc6blbobq"
         ],
         "mwipth965phnz6umzqj": [
             "mwiwdlicht7b4dqe9nc",
@@ -368,6 +368,21 @@
                             "ID": "ms8e5k5r6gdn6sgm23",
                             "VARNAME": "curtime",
                             "DATATYPE": "datetime",
+                            "NAME": "",
+                            "FEATURE": "",
+                            "FEATURE_SETTING": "",
+                            "MINIMUM": "",
+                            "MAXIMUM": "",
+                            "DEFAULT": "0",
+                            "POLL_INTERVAL": ""
+                        }
+                    },
+                    {
+                        "id": "variable",
+                        "settings": {
+                            "ID": "mwvsyuwyk5vytxcc0s",
+                            "VARNAME": "poll_started",
+                            "DATATYPE": "float",
                             "NAME": "",
                             "FEATURE": "",
                             "FEATURE_SETTING": "",
@@ -1769,7 +1784,7 @@
             "id": "tbl",
             "settings": {
                 "ID": "mrubrq7n41jcwl4pn2p",
-                "ENABLED": "0",
+                "ENABLED": "1",
                 "TBL_DEBUG_PRINT": "0",
                 "WEBENABLED": "1",
                 "TABLES": [
@@ -2029,6 +2044,88 @@
                             "INDEXFIELD": "",
                             "STORAGE_PATH": "/lfs"
                         }
+                    },
+                    {
+                        "id": "tbl_table",
+                        "settings": {
+                            "ID": "mwuiuh99fobk19tibnp",
+                            "NAME": "MQTT_OUTBOX",
+                            "COMMENT": "MQTT messages published at QoS 1 or 2, kept until the broker acknowledges them: sent when the device connects, again after a reconnection. Cleared on boot.",
+                            "IN_MEMORY": "0",
+                            "MAXRECORDS": 100,
+                            "STRUCT": "L",
+                            "KEYFIELDS": "0",
+                            "FIELDS": [
+                                {
+                                    "id": "tbl_field",
+                                    "settings": {
+                                        "ID": "mwuiuh99zyqyjsgi9x",
+                                        "NAME": "timestamp",
+                                        "DISPLAY_NAME": "",
+                                        "FIELDTYPE": "E",
+                                        "P1": "0",
+                                        "P2": "2147483647",
+                                        "DEFAULT": "",
+                                        "ENUMS": []
+                                    }
+                                },
+                                {
+                                    "id": "tbl_field",
+                                    "settings": {
+                                        "ID": "mwuiuh99t4iitesxpqi",
+                                        "NAME": "msg_id",
+                                        "DISPLAY_NAME": "Packet ID",
+                                        "FIELDTYPE": "F",
+                                        "P1": "0",
+                                        "P2": "65535",
+                                        "DEFAULT": "",
+                                        "ENUMS": []
+                                    }
+                                },
+                                {
+                                    "id": "tbl_field",
+                                    "settings": {
+                                        "ID": "mwuiuh9975d91u5w1hq",
+                                        "NAME": "qos",
+                                        "DISPLAY_NAME": "QoS",
+                                        "FIELDTYPE": "F",
+                                        "P1": "0",
+                                        "P2": "2",
+                                        "DEFAULT": "",
+                                        "ENUMS": []
+                                    }
+                                },
+                                {
+                                    "id": "tbl_field",
+                                    "settings": {
+                                        "ID": "mwuiuh99wvurx7dzpkc",
+                                        "NAME": "topic",
+                                        "DISPLAY_NAME": "",
+                                        "FIELDTYPE": "S",
+                                        "P1": "0",
+                                        "P2": "64",
+                                        "DEFAULT": "",
+                                        "ENUMS": []
+                                    }
+                                },
+                                {
+                                    "id": "tbl_field",
+                                    "settings": {
+                                        "ID": "mwuiuh99gsx3ah27vo",
+                                        "NAME": "payload",
+                                        "DISPLAY_NAME": "Payload File",
+                                        "FIELDTYPE": "S",
+                                        "P1": "0",
+                                        "P2": "32",
+                                        "DEFAULT": "",
+                                        "ENUMS": []
+                                    }
+                                }
+                            ],
+                            "IN_MEMORY_TABLE": "[]",
+                            "INDEXFIELD": "",
+                            "STORAGE_PATH": "/lfs"
+                        }
                     }
                 ],
                 "STORAGE_PATH": "/lfs"
@@ -2241,7 +2338,7 @@
                 "TIMEOUT": "1000",
                 "POLL_INTERVAL": "1000",
                 "FRAME_DELAY": "2",
-                "MAX_REQUESTS": "10",
+                "MAX_REQUESTS": "30",
                 "MODBUSDEVICES": []
             }
         },
@@ -3594,6 +3691,15 @@
                             "NAME": "",
                             "COLUMNS": ""
                         }
+                    },
+                    {
+                        "id": "console_table_item",
+                        "settings": {
+                            "ID": "mwuiuhmd0pxb612mapvn",
+                            "TABLE": "mwuiuh99fobk19tibnp",
+                            "NAME": "",
+                            "COLUMNS": ""
+                        }
                     }
                 ],
                 "CUSTOM_PAGES_REFRESH_INTERVAL": "2",
@@ -3891,8 +3997,8 @@
                 "ID": "mruc2vmmx9dsc14cv0k",
                 "DISPLAY_NAME": "",
                 "FEATURE": "",
-                "X": 105,
-                "Y": 195,
+                "X": -420,
+                "Y": 105,
                 "INPUTS": [],
                 "OUTPUTS": [],
                 "GROUP": "mrzojkjbrt20v4bp6z",
@@ -3906,8 +4012,8 @@
                 "ID": "mruc39sfr0m4r20ucz",
                 "DISPLAY_NAME": "",
                 "FEATURE": "",
-                "X": 465,
-                "Y": 195,
+                "X": 300,
+                "Y": 120,
                 "INPUTS": [],
                 "OUTPUTS": [],
                 "GROUP": "mrzojkjbrt20v4bp6z",
@@ -4032,7 +4138,7 @@
                 "ID": "mruc5604xcmunsp15t",
                 "DISPLAY_NAME": "",
                 "FEATURE": "",
-                "X": 105,
+                "X": -90,
                 "Y": 600,
                 "INPUTS": [],
                 "OUTPUTS": [],
@@ -4047,8 +4153,8 @@
                 "ID": "mruc5kaitx6ezhoctf",
                 "DISPLAY_NAME": "",
                 "FEATURE": "",
-                "X": 465,
-                "Y": 585,
+                "X": 225,
+                "Y": 570,
                 "INPUTS": [],
                 "OUTPUTS": [],
                 "GROUP": "mrzojkjbrt20v4bp6z",
@@ -6053,19 +6159,6 @@
         {
             "id": "node_link",
             "settings": {
-                "ID": "ms081n55pm5uw5x8av",
-                "SOURCE": "",
-                "SOURCE_FEATURE": "mruc2vmmx9dsc14cv0k",
-                "SOURCE_PORT": "timer_complete",
-                "TARGET": "",
-                "TARGET_FEATURE": "mruc39sfr0m4r20ucz",
-                "TARGET_PORT": "set_value",
-                "ARGUMENTS": []
-            }
-        },
-        {
-            "id": "node_link",
-            "settings": {
                 "ID": "ms08t2cdwerfhhhzmig",
                 "SOURCE": "",
                 "SOURCE_FEATURE": "mrzojdy4yn2pf7crc4",
@@ -6275,15 +6368,6 @@
                 "ID": "mwipvteogztkip0r7j",
                 "SOCKET": "9",
                 "TIBBIT": "45_1",
-                "PLATFORM": ""
-            }
-        },
-        {
-            "id": "tibbit_10",
-            "settings": {
-                "ID": "mwitqefg49etpbsi4aq",
-                "SOCKET": "11",
-                "TIBBIT": "10",
                 "PLATFORM": ""
             }
         },
@@ -6678,6 +6762,154 @@
                 "SOCKET": "2",
                 "TIBBIT": "21",
                 "PLATFORM": ""
+            }
+        },
+        {
+            "id": "tibbit_25",
+            "settings": {
+                "ID": "mwvkhn00xmgc6blbobq",
+                "SOCKET": "9",
+                "TIBBIT": "25",
+                "PLATFORM": ""
+            }
+        },
+        {
+            "id": "node_variable_set",
+            "settings": {
+                "ID": "mwvsynyu9vjy851n3k7",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": 810,
+                "Y": 45,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "mrzojkjbrt20v4bp6z",
+                "ARGUMENTS": [
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwvsynyuepgcmrs2lw7",
+                            "ARGVALUE": "1",
+                            "TARGETPARAM": "value"
+                        }
+                    }
+                ],
+                "VARIABLE": "mwvsyuwyk5vytxcc0s"
+            }
+        },
+        {
+            "id": "node_link",
+            "settings": {
+                "ID": "mwvsz61r5dzcd9zbj8h",
+                "SOURCE": "",
+                "SOURCE_FEATURE": "mruc39sfr0m4r20ucz",
+                "SOURCE_PORT": "variable_set_done",
+                "TARGET": "",
+                "TARGET_FEATURE": "mwvsynyu9vjy851n3k7",
+                "TARGET_PORT": "set_value",
+                "ARGUMENTS": []
+            }
+        },
+        {
+            "id": "node_comparison",
+            "settings": {
+                "ID": "mwvsz9zful5d2dobpne",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": -90,
+                "Y": 105,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "mrzojkjbrt20v4bp6z",
+                "ARGUMENTS": [
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwvsz9zfs9fxftgfd7k",
+                            "ARGVALUE": "{{$mwvsyuwyk5vytxcc0s}}",
+                            "TARGETPARAM": "operand1"
+                        }
+                    },
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwvsz9zfd910qkqzl9",
+                            "ARGVALUE": "=",
+                            "TARGETPARAM": "operator"
+                        }
+                    },
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwvsz9zfhr6bp73fhot",
+                            "ARGVALUE": "0",
+                            "TARGETPARAM": "operand2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "node_link",
+            "settings": {
+                "ID": "mwvsz9zfuiq7vno6k1n",
+                "SOURCE": "",
+                "SOURCE_FEATURE": "mruc2vmmx9dsc14cv0k",
+                "SOURCE_PORT": "timer_complete",
+                "TARGET": "",
+                "TARGET_FEATURE": "mwvsz9zful5d2dobpne",
+                "TARGET_PORT": "comp",
+                "ARGUMENTS": []
+            }
+        },
+        {
+            "id": "node_link",
+            "settings": {
+                "ID": "mwvszie6cseksaj8mlw",
+                "SOURCE": "",
+                "SOURCE_FEATURE": "mwvsz9zful5d2dobpne",
+                "SOURCE_PORT": "true_output",
+                "TARGET": "",
+                "TARGET_FEATURE": "mruc39sfr0m4r20ucz",
+                "TARGET_PORT": "set_value",
+                "ARGUMENTS": []
+            }
+        },
+        {
+            "id": "node_variable_set",
+            "settings": {
+                "ID": "mwvt09p2fwcv788cd1w",
+                "DISPLAY_NAME": "",
+                "FEATURE": "",
+                "X": 435,
+                "Y": 855,
+                "INPUTS": [],
+                "OUTPUTS": [],
+                "GROUP": "mrzojkjbrt20v4bp6z",
+                "ARGUMENTS": [
+                    {
+                        "id": "node_argument",
+                        "settings": {
+                            "ID": "mwvt09p2ds7ku0lh9f",
+                            "ARGVALUE": "0",
+                            "TARGETPARAM": "value"
+                        }
+                    }
+                ],
+                "VARIABLE": "mwvsyuwyk5vytxcc0s"
+            }
+        },
+        {
+            "id": "node_link",
+            "settings": {
+                "ID": "mwvt09p2anb3o67ijxw",
+                "SOURCE": "",
+                "SOURCE_FEATURE": "mruc5kaitx6ezhoctf",
+                "SOURCE_PORT": "tbl_record_not_found",
+                "TARGET": "",
+                "TARGET_FEATURE": "mwvt09p2fwcv788cd1w",
+                "TARGET_PORT": "set_value",
+                "ARGUMENTS": []
             }
         }
     ]
